@@ -1,34 +1,78 @@
-class Category {
-  String thumbnail;
-  String name;
-  int noOfCourses;
+// import 'package:education_app/jenissampah/Kaleng.dart';
+// import 'package:education_app/jenissampah/kardus.dart';
+// import 'package:education_app/jenissampah/kertas.dart';
+// import 'package:education_app/jenissampah/plastik.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
-  Category({
-    required this.name,
-    required this.noOfCourses,
-    required this.thumbnail,
-  });
-}
+// class Kategori {
+//   String thumbnail;
+//   String name;
+//   int noOfCourses;
+//   // VoidCallback onTap;
 
-List<Category> categoryList = [
-  Category(
-    name: 'Development',
-    noOfCourses: 55,
-    thumbnail: 'assets/icons/laptop.jpg',
-  ),
-  Category(
-    name: 'Accounting',
-    noOfCourses: 20,
-    thumbnail: 'assets/icons/accounting.jpg',
-  ),
-  Category(
-    name: 'Photography',
-    noOfCourses: 16,
-    thumbnail: 'assets/icons/photography.jpg',
-  ),
-  Category(
-    name: 'Product Design',
-    noOfCourses: 25,
-    thumbnail: 'assets/icons/design.jpg',
-  ),
-];
+//   Kategori({
+//     required this.name,
+//     required this.noOfCourses,
+//     required this.thumbnail,
+//     // required this.onTap,
+//   });
+// }
+
+// List<Kategori> KategoriList = [
+//   Kategori(
+//     name: 'Botol Plastik',
+//     noOfCourses: 4500,
+//     thumbnail: 'assets/icons/sampah-plastik.webp',
+//     // onTap: () {
+//     //   Navigator.push(
+//     //     context,
+//     //     MaterialPageRoute(
+//     //       builder: (context) => DetailsScreen(),
+//     //     ),
+//     //   );
+//     // },
+//   ),
+//   Kategori(
+//     name: 'Kaleng',
+//     noOfCourses: 5000,
+//     thumbnail: 'assets/icons/kaleng.png',
+//     // onTap: () {
+//     //   Navigator.push(
+//     //     context,
+//     //     MaterialPageRoute(
+//     //       builder: (context) => DetailsScreen(),
+//     //     ),
+//     //   );
+//     // },
+//   ),
+//   Kategori(
+//     name: 'Kertas',
+//     noOfCourses: 3000,
+//     thumbnail: 'assets/icons/kertas.jpg',
+//     // onTap: () {
+//     //   Navigator.push(
+//     //     context,
+//     //     MaterialPageRoute(
+//     //       builder: (context) => DetailsScreen(),
+//     //     ),
+//     //   );
+//     // },
+//   ),
+//   Kategori(
+//     name: 'Kardus',
+//     noOfCourses: 4000,
+//     thumbnail: 'assets/icons/kardus.png',
+//     // onTap: () {
+//     //   Navigator.push(
+//     //     context,
+//     //     MaterialPageRoute(
+//     //       builder: (context) => DetailsScreen(),
+//     //     ),
+//     //   );
+//     // },
+//   ),
+// ];
+
+
+
