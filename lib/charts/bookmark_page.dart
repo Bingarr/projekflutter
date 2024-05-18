@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:education_app/charts/bookmark_model.dart';
+import 'package:trashgrab/charts/bookmark_model.dart';
 
 class BookmarksPage extends StatefulWidget {
+  const BookmarksPage({super.key});
+
 
   @override
   _BookmarksPageState createState() => _BookmarksPageState();
@@ -15,8 +17,8 @@ class _BookmarksPageState extends State<BookmarksPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Keranjang Terambil"),
-        backgroundColor: Color.fromARGB(255, 21, 111, 24),
+        title: const Text("Keranjang Terambil"),
+        backgroundColor: const Color.fromARGB(255, 21, 111, 24),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -24,7 +26,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
             ListView.builder(
               itemCount: bookmarkBloc.items.length,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(bookmarkBloc.items[index].title),

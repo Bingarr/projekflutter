@@ -6,11 +6,11 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('History'),
-        leading: SizedBox(),
+        title: const Text('History'),
+        leading: const SizedBox(),
       ),
       body: ListView(
-        children: [
+        children: const [
           HistoryEntry(
             driverName: 'Japran',
             vehicleNumber: 'F 1211 ICK',
@@ -44,7 +44,7 @@ class HistoryEntry extends StatelessWidget {
   final String pricePerKg;
   final String status;
 
-  HistoryEntry({
+  const HistoryEntry({super.key, 
     required this.driverName,
     required this.vehicleNumber,
     required this.location,
@@ -57,7 +57,7 @@ class HistoryEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: CircleAvatar(
           child: Text(driverName[0]),

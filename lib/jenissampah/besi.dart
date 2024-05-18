@@ -1,11 +1,10 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/constants/icons.dart';
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class BesiScreen extends StatefulWidget {
-   const BesiScreen({
+  const BesiScreen({
     Key? key,
   }) : super(key: key);
 
@@ -59,10 +58,10 @@ class _BesiScreenState extends State<BesiScreen> {
                   height: 25,
                 ),
                 Image.asset(
-                  'assets/icons/besi.jpg', 
-                  height: 200, 
-                  width: double.infinity, 
-                  fit: BoxFit.cover, 
+                  'assets/icons/besi.jpg',
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(
                   height: 15,
@@ -137,8 +136,7 @@ class Description extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.only(top: 20.0),
-      child: Text(
-          "Ayo tukarkan sampahmu!!"),
+      child: Text("Ayo tukarkan sampahmu!!"),
     );
   }
 }
@@ -227,7 +225,7 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -237,8 +235,12 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
 class CustomTabView extends StatefulWidget {
   final Function(int) changeTab;
   final int index;
-  const CustomTabView({Key? key, required this.changeTab, required this.index})
-      : super(key: key);
+
+  const CustomTabView({
+    Key? key,
+    required this.changeTab,
+    required this.index,
+  }) : super(key: key);
 
   @override
   State<CustomTabView> createState() => _CustomTabViewState();
@@ -254,7 +256,9 @@ class _CustomTabViewState extends State<CustomTabView> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .08, vertical: 15),
+          horizontal: MediaQuery.of(context).size.width * .08,
+          vertical: 15,
+        ),
         decoration: BoxDecoration(
           color: widget.index == index ? kPrimaryColor : null,
           borderRadius: BorderRadius.circular(10),

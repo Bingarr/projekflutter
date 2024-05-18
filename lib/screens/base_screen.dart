@@ -1,13 +1,8 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/constants/icons.dart';
-import 'package:education_app/constants/size.dart';
-import 'package:education_app/main.dart';
-import 'package:education_app/screens/featuerd_screen.dart';
-import 'package:education_app/screens/history.dart';
-import 'package:education_app/screens/profile.dart';
-import 'package:education_app/charts/chart_page.dart';
-import 'package:education_app/charts/bookmark_model.dart';
-import 'package:provider/provider.dart';
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/screens/featuerd_screen.dart';
+import 'package:trashgrab/screens/history.dart';
+import 'package:trashgrab/screens/profile.dart';
+import 'package:trashgrab/charts/chart_page.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -21,7 +16,7 @@ class _BaseScreenState extends State<BaseScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    FeaturedScreen(), 
+    FeaturedScreen(),
     HistoryPage(),
     ChartPage(),
     ProfileScreen()
@@ -32,36 +27,36 @@ class _BaseScreenState extends State<BaseScreen> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      
       bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: kPrimaryColor,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          items: [
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "Beranda",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              label: "Riwayat",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag),
-              label: "Keranjang",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "Profil",
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: (int index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          }),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: kPrimaryColor,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Beranda",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: "Riwayat",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: "Keranjang",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profil",
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:education_app/constants/icons.dart';
+import 'package:trashgrab/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -84,7 +84,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [controls ?? Container()],
             ),
-          )
+          ),
         ],
       ),
     );

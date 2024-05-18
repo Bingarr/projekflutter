@@ -1,0 +1,30 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "education-app-bc913",
+                    "appId": "1:250660689093:android:b50bc9def63b334c998cac",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "education-app-bc913",
+                    "appId": "1:250660689093:ios:6a15470b1c8101cd998cac",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "education-app-bc913",
+                    "configurations": {
+                        "android": "1:250660689093:android:b50bc9def63b334c998cac",
+                        "ios": "1:250660689093:ios:6a15470b1c8101cd998cac"
+                    }
+                }
+            }
+        }
+    }
+}

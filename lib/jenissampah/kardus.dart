@@ -1,12 +1,11 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/constants/icons.dart';
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class KardusScreen extends StatefulWidget {
   // final String title;
-   const KardusScreen({
+  const KardusScreen({
     Key? key,
     // required this.title,
   }) : super(key: key);
@@ -61,10 +60,10 @@ class _KardusScreenState extends State<KardusScreen> {
                   height: 25,
                 ),
                 Image.asset(
-                  'assets/icons/kardus.png', 
-                  height: 200, 
-                  width: double.infinity, 
-                  fit: BoxFit.cover, 
+                  'assets/icons/kardus.png',
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(
                   height: 15,
@@ -140,7 +139,8 @@ class Description extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(top: 20.0),
       child: Text(
-          "Ayo tukarkan sampahmu!!"),
+        "Ayo tukarkan sampahmu!!",
+      ),
     );
   }
 }
@@ -229,7 +229,7 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -239,8 +239,12 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
 class CustomTabView extends StatefulWidget {
   final Function(int) changeTab;
   final int index;
-  const CustomTabView({Key? key, required this.changeTab, required this.index})
-      : super(key: key);
+
+  const CustomTabView({
+    Key? key,
+    required this.changeTab,
+    required this.index,
+  }) : super(key: key);
 
   @override
   State<CustomTabView> createState() => _CustomTabViewState();
@@ -256,7 +260,9 @@ class _CustomTabViewState extends State<CustomTabView> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .08, vertical: 15),
+          horizontal: MediaQuery.of(context).size.width * .08,
+          vertical: 15,
+        ),
         decoration: BoxDecoration(
           color: widget.index == index ? kPrimaryColor : null,
           borderRadius: BorderRadius.circular(10),

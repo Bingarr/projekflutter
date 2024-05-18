@@ -1,7 +1,7 @@
-// import 'package:education_app/jenissampah/Kaleng.dart';
-// import 'package:education_app/jenissampah/kardus.dart';
-// import 'package:education_app/jenissampah/kertas.dart';
-// import 'package:education_app/jenissampah/plastik.dart';
+// import 'package:trashgrab/jenissampah/kaleng.dart';
+// import 'package:trashgrab/jenissampah/kardus.dart';
+// import 'package:trashgrab/jenissampah/kertas.dart';
+// import 'package:trashgrab/jenissampah/plastik.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 

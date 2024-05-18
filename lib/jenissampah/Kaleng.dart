@@ -1,5 +1,7 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/constants/icons.dart';
+// ignore_for_file: file_names
+
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -225,7 +227,7 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -235,8 +237,12 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
 class CustomTabView extends StatefulWidget {
   final Function(int) changeTab;
   final int index;
-  const CustomTabView({Key? key, required this.changeTab, required this.index})
-      : super(key: key);
+
+  const CustomTabView({
+    Key? key,
+    required this.changeTab,
+    required this.index,
+  }) : super(key: key);
 
   @override
   State<CustomTabView> createState() => _CustomTabViewState();

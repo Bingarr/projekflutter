@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(education_app LANGUAGES CXX)
+project(trashgrab LANGUAGES CXX)
 
-set(BINARY_NAME "education_app")
+set(BINARY_NAME "trashgrab")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -1,21 +1,23 @@
-import 'package:education_app/login_checker.dart';
-import 'package:education_app/screens/base_screen.dart';
+import 'package:trashgrab/login_checker.dart';
 import 'package:flutter/material.dart';
-import 'package:education_app/login.dart';
-import 'package:education_app/signup.dart';
-import 'package:education_app/charts/chart_page.dart';
-import 'package:education_app/charts/bookmark_model.dart';
+import 'package:trashgrab/login.dart';
+import 'package:trashgrab/signup.dart';
+import 'package:trashgrab/charts/bookmark_model.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-void main() async {
 
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-  runApp(ChangeNotifierProvider(
-    create: (context) => BookmarkBloc(), child: MyApp()));
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => BookmarkBloc(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -57,30 +59,30 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          
-
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "Welcome",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -95,9 +97,11 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                    image:
-                        DecorationImage(image: AssetImage("assets/icons/logoo.png"))),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/icons/logoo.png"),
+                  ),
+                ),
               ),
               Column(
                 children: <Widget>[
@@ -106,43 +110,54 @@ class HomePage extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ),
+                      );
                     },
                     // defining the shape
                     shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Text(
+                      side: const BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Text(
                       "Login",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                   // creating the signup button
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupPage()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignupPage(),
+                        ),
+                      );
                     },
-                    color: Color.fromARGB(255, 21, 111, 24),
+                    color: const Color.fromARGB(255, 21, 111, 24),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Text(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Text(
                       "Sign up",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

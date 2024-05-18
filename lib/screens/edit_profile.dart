@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education_app/widgets/image_picker.dart';
+import 'package:trashgrab/widgets/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -12,12 +13,10 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-
-  void _updateProfile() async {}
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +25,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back)),
-          title: Text('Edit Profile'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back),
+          ),
+          title: const Text('Edit Profile'),
         ),
         body: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Center(child: ProfileImagePicker()),
+              const Center(child: ProfileImagePicker()),
               TextField(
                 readOnly: true,
                 controller: _emailController,
@@ -47,7 +47,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -56,7 +56,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: _addressController,
                 decoration: InputDecoration(
@@ -65,7 +65,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: _phoneController,
                 decoration: InputDecoration(
@@ -74,7 +74,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
                   // Implementasi untuk menyimpan perubahan profile
@@ -93,15 +93,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       'phone': phone
                     });
                     ScaffoldMessenger.of(context).clearSnackBars();
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Data berhasil di ubah!')));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Data berhasil di ubah!')));
                   } catch (e) {
-                    print(e);
+                    log(e.toString());
                   }
 
                   // Contoh aksi: Menyimpan data
                   // Disini kamu bisa menambahkan kode untuk menyimpan data ke database atau tempat penyimpanan lainnya
                 },
-                child: Text('Simpan'),
+                child: const Text('Simpan'),
               ),
             ],
           ),

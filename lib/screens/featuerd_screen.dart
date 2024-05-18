@@ -1,12 +1,11 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/jenissampah/plastik.dart';
-import 'package:education_app/jenissampah/kertas.dart';
-import 'package:education_app/jenissampah/Kaleng.dart';
-import 'package:education_app/jenissampah/kardus.dart';
-import 'package:education_app/screens/activity.dart';
-import 'package:education_app/screens/jenis_sampah.dart';
-import 'package:education_app/widgets/circle_button.dart';
-import 'package:flutter/foundation.dart';
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/jenissampah/plastik.dart';
+import 'package:trashgrab/jenissampah/kertas.dart';
+import 'package:trashgrab/jenissampah/kaleng.dart';
+import 'package:trashgrab/jenissampah/kardus.dart';
+import 'package:trashgrab/screens/activity.dart';
+import 'package:trashgrab/screens/jenis_sampah.dart';
+import 'package:trashgrab/widgets/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -44,7 +43,7 @@ class Body extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 20,
             left: 30,
           ),
@@ -68,13 +67,13 @@ class Body extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 30, right: 85),
+              padding: const EdgeInsets.only(left: 30, right: 85),
               alignment: Alignment.topLeft,
               child: Text(
                 "Jenis sampah",
@@ -85,7 +84,7 @@ class Body extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: ((context) {
-                  return JenisSampah();
+                  return const JenisSampah();
                 })));
               },
               child: Text(
@@ -103,15 +102,15 @@ class Body extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => KalengScreen()));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KalengScreen()));
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                margin: EdgeInsets.symmetric(horizontal: 7),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 7),
                 width: 180,
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 236, 232, 232),
+                  color: const Color.fromARGB(255, 236, 232, 232),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -119,10 +118,10 @@ class Body extends StatelessWidget {
                     Container(
                       child: Image.asset('assets/icons/kaleng.png', width: 150 , height: 120 ),
                     ),
-                    Text(
+                    const Text(
                       'Kaleng', 
                     style: TextStyle(fontSize: 16)),
-                    Text(
+                    const Text(
                       'Rp 5000/kg', 
                       style: TextStyle(fontSize: 12))
                   ],
@@ -130,28 +129,26 @@ class Body extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              margin: EdgeInsets.symmetric(horizontal: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 7),
               width: 180,
               height: 200,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 236, 232, 232),
+                  color: const Color.fromARGB(255, 236, 232, 232),
                   borderRadius: BorderRadius.circular(20)),
               child: Column(
                 children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PlastikScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PlastikScreen()));
                         },
-                        child: Container(
-                          child: Image.asset('assets/icons/sampah-plastik.webp', width: 150 , height: 120 ),
-                        ),
+                        child: Image.asset('assets/icons/sampah-plastik.webp', width: 150 , height: 120 ),
                       ),
-                      Text(
+                      const Text(
                         'Plastik',
                         style: TextStyle(fontSize: 16),
                       ),
-                      Text(
+                      const Text(
                         'Rp 4500/kg',
                         style: TextStyle(fontSize: 12),
                       )
@@ -160,34 +157,32 @@ class Body extends StatelessWidget {
                 ),
               ],
             ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              margin: EdgeInsets.symmetric(horizontal: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 7),
               width: 180,
               height: 200,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 236, 232, 232),
+                color: const Color.fromARGB(255, 236, 232, 232),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => KardusScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KardusScreen()));
                     },
-                    child: Container(
-                      child: Image.asset('assets/icons/kardus.png', width: 150 , height: 120 ),
-                    ),
+                    child: Image.asset('assets/icons/kardus.png', width: 150 , height: 120 ),
                   ),
-                  Text(
+                  const Text(
                     'Kardus',
                     style: TextStyle(fontSize: 16),
                   ),
-                  Text(
+                  const Text(
                     'Rp 4000/kg',
                     style: TextStyle(fontSize: 12),
                   ),
@@ -195,29 +190,27 @@ class Body extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              margin: EdgeInsets.symmetric(horizontal: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 7),
               width: 180,
               height: 200,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 236, 232, 232),
+                color: const Color.fromARGB(255, 236, 232, 232),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => KertasScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KertasScreen()));
                     },
-                    child: Container(
-                      child: Image.asset('assets/icons/kertas.jpg', width: 150 , height: 120 ),
-                    ),
+                    child: Image.asset('assets/icons/kertas.jpg', width: 150 , height: 120 ),
                   ),
-                  Text(
+                  const Text(
                     'Kertas',
                     style: TextStyle(fontSize: 16),
                   ),
-                  Text(
+                  const Text(
                     'Rp 3000/kg',
                     style: TextStyle(fontSize: 12),
                   ),
@@ -228,7 +221,7 @@ class Body extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Activity()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Activity()));
           },
           child: Container(
             margin: const EdgeInsets.only(right: 20, left: 20),
@@ -244,10 +237,10 @@ class Body extends StatelessWidget {
                 )
               ],
             ),
-            child: ListTile(
+            child: const ListTile(
               title: Text(
                 "Truk Sampah Menuju Lokasi",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'ProductSans',
                   fontWeight: FontWeight.bold,
@@ -255,7 +248,7 @@ class Body extends StatelessWidget {
               ),
               subtitle: Text(
                 "Nabila",
-                style: const TextStyle(fontSize: 16, fontFamily: 'ProductSans'),
+                style: TextStyle(fontSize: 16, fontFamily: 'ProductSans'),
               ),
               leading: Icon(Icons.fire_truck_rounded),
               trailing: Icon(Icons.chevron_right_rounded),
@@ -280,16 +273,14 @@ class Body extends StatelessWidget {
       },
       child: Container(
         width: 80,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        margin: EdgeInsets.symmetric(horizontal: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 7),
         decoration: BoxDecoration(
             color: const Color.fromARGB(255, 236, 232, 232),
             borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: [
-            Container(
-              child: Icon(Icons.date_range_rounded),
-            ),
+            const Icon(Icons.date_range_rounded),
             Text(day),
           ],
         ),

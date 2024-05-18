@@ -1,4 +1,4 @@
-# education_app
+# trashgrab
 
 A new Flutter project.
 

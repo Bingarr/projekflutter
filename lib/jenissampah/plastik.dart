@@ -1,8 +1,7 @@
-import 'package:education_app/constants/color.dart';
-import 'package:education_app/constants/icons.dart';
+import 'package:trashgrab/constants/color.dart';
+import 'package:trashgrab/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 
 class PlastikScreen extends StatefulWidget {
   const PlastikScreen({
@@ -226,7 +225,7 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -236,8 +235,12 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
 class CustomTabView extends StatefulWidget {
   final Function(int) changeTab;
   final int index;
-  const CustomTabView({Key? key, required this.changeTab, required this.index})
-      : super(key: key);
+
+  const CustomTabView({
+    Key? key,
+    required this.changeTab,
+    required this.index,
+  }) : super(key: key);
 
   @override
   State<CustomTabView> createState() => _CustomTabViewState();
@@ -253,7 +256,9 @@ class _CustomTabViewState extends State<CustomTabView> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .08, vertical: 15),
+          horizontal: MediaQuery.of(context).size.width * .08,
+          vertical: 15,
+        ),
         decoration: BoxDecoration(
           color: widget.index == index ? kPrimaryColor : null,
           borderRadius: BorderRadius.circular(10),

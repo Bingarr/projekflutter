@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileImagePicker extends StatefulWidget {
-  const ProfileImagePicker({Key? key});
+  const ProfileImagePicker({
+    super.key,
+  });
 
   @override
   State<ProfileImagePicker> createState() => _ProfileImagePickerState();
@@ -23,24 +25,27 @@ class _ProfileImagePickerState extends State<ProfileImagePicker> {
       _selectedImage = File(pickedImage.path);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var content = Image.asset('assets/icons/profile.jpg', fit: BoxFit.cover);
-    if(_selectedImage != null){
+    if (_selectedImage != null) {
       Image.network(_selectedImage!.path);
     }
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 0.5),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            width: MediaQuery.of(context).size.height * 0.15,
-            height: MediaQuery.of(context).size.height * 0.15,
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(100), child: content),
-          ),
+        decoration: BoxDecoration(
+          border: Border.all(width: 0.5),
+          borderRadius: BorderRadius.circular(100),
+        ),
+        width: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.height * 0.15,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: content,
+        ),
+      ),
     );
   }
 }

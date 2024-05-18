@@ -1,4 +1,4 @@
-import 'package:education_app/charts/item_model.dart';
+import 'package:trashgrab/charts/item_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class BookmarkBloc extends ChangeNotifier {

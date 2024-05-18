@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:education_app/login_checker.dart';
-import 'package:education_app/screens/edit_profile.dart';
+import 'package:trashgrab/login_checker.dart';
+import 'package:trashgrab/screens/edit_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,18 +20,18 @@ class ProfileScreen extends StatelessWidget {
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               if (!snapshot.hasData || snapshot.hasError) {
-                return Text('error');
+                return const Text('error');
               }
               final userData = snapshot.data!.data();
               return Column(
                 children: [
                   const SizedBox(height: 40),
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 70,
                     backgroundImage: AssetImage('assets/icons/profile.jpg'),
                   ),
@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.all(15),
-                            backgroundColor: Color.fromARGB(255, 21, 111, 24),
+                            backgroundColor: const Color.fromARGB(255, 21, 111, 24),
                           ),
                           child: const Text(
                             'Edit Profile',
@@ -79,9 +79,9 @@ class ProfileScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.all(15),
-                            backgroundColor: Color.fromARGB(255, 21, 111, 24),
+                            backgroundColor: const Color.fromARGB(255, 21, 111, 24),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Log Out',
                             style: TextStyle(
                               color: Colors.white,
@@ -107,8 +107,8 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-                offset: Offset(0, 5),
-                color: Color.fromARGB(255, 21, 111, 24).withOpacity(.2),
+                offset: const Offset(0, 5),
+                color: const Color.fromARGB(255, 21, 111, 24).withOpacity(.2),
                 spreadRadius: 2,
                 blurRadius: 10)
           ]),
