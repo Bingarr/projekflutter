@@ -28,6 +28,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>we need camera access to take pictures during attendance and to take photo evidence via camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need a mic for the feature needs in the application</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photos and images to retrieve files from your device for submission to our form</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -1,61 +1,56 @@
+import 'package:provider/provider.dart';
 import 'package:trashgrab/constants/color.dart';
-import 'package:trashgrab/screens/featuerd_screen.dart';
-import 'package:trashgrab/screens/history.dart';
-import 'package:trashgrab/screens/profile.dart';
-import 'package:trashgrab/charts/chart_page.dart';
+import 'package:trashgrab/models/role_enum.dart';
+import 'package:trashgrab/providers/base_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:trashgrab/utils/hive/role_hive_service.dart';
 
-class BaseScreen extends StatefulWidget {
+class BaseScreen extends StatelessWidget {
   const BaseScreen({Key? key}) : super(key: key);
 
   @override
-  _BaseScreenState createState() => _BaseScreenState();
-}
-
-class _BaseScreenState extends State<BaseScreen> {
-  int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    FeaturedScreen(),
-    HistoryPage(),
-    ChartPage(),
-    ProfileScreen()
-  ];
-  @override
   Widget build(BuildContext context) {
+    final provider = context.watch<BaseProvider>();
+    
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: provider.currentPage,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: kPrimaryColor,
         backgroundColor: Colors.white,
         elevation: 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Beranda",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: "Riwayat",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
-            label: "Keranjang",
-          ),
-          BottomNavigationBarItem(
+        items: [
+          if (RoleHiveServices.getRole()?.role ==
+              RoleUserCurrent.user) ...const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Beranda",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: "Riwayat",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag),
+              label: "Keranjang",
+            ),
+          ] else ...const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_long),
+              label: "Transaksi",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.interests),
+              label: "Tipe",
+            ),
+          ],
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Profil",
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        currentIndex: provider.index,
+        onTap: provider.changeIndex,
       ),
     );
   }

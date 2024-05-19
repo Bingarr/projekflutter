@@ -37,7 +37,8 @@ class JenisSampah extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -49,9 +50,11 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KalengScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const KalengScreen()));
                         },
-                        child: Image.asset('assets/icons/kaleng.png', width: 155 , height: 140),
+                        child: Image.asset('assets/icons/kaleng.png',
+                            width: 155, height: 140),
                       ),
                       const Text(
                         'Kaleng',
@@ -65,7 +68,8 @@ class JenisSampah extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -77,9 +81,11 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PlastikScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const PlastikScreen()));
                         },
-                        child: Image.asset('assets/icons/sampah-plastik.webp', width: 155 , height: 140 ),
+                        child: Image.asset('assets/icons/sampah-plastik.webp',
+                            width: 155, height: 140),
                       ),
                       const Text(
                         'Plastik',
@@ -99,7 +105,8 @@ class JenisSampah extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -111,9 +118,11 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KardusScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const KardusScreen()));
                         },
-                        child: Image.asset('assets/icons/kardus.png', width: 155 , height: 140 ),
+                        child: Image.asset('assets/icons/kardus.png',
+                            width: 155, height: 140),
                       ),
                       const Text(
                         'Kardus',
@@ -127,7 +136,8 @@ class JenisSampah extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -139,9 +149,11 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KertasScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const KertasScreen()));
                         },
-                        child: Image.asset('assets/icons/kertas.jpg', width: 155 , height: 140 ),
+                        child: Image.asset('assets/icons/kertas.jpg',
+                            width: 155, height: 140),
                       ),
                       const Text(
                         'Kertas',
@@ -150,7 +162,7 @@ class JenisSampah extends StatelessWidget {
                       const Text(
                         'Rp 3000/kg',
                         style: TextStyle(fontSize: 15),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -161,7 +173,8 @@ class JenisSampah extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -173,10 +186,17 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BesiScreen(),
-                          ));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const BesiScreen(),
+                            ),
+                          );
                         },
-                        child: Image.asset('assets/icons/besi.jpg', width: 155 , height: 140 ),
+                        child: Image.asset(
+                          'assets/icons/besi.jpg',
+                          width: 155,
+                          height: 140,
+                        ),
                       ),
                       const Text(
                         'Besi',
@@ -185,12 +205,15 @@ class JenisSampah extends StatelessWidget {
                       const Text(
                         'Rp 6000/kg',
                         style: TextStyle(fontSize: 15),
-                      )
+                      ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 10,
+                  ),
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   width: 180,
                   height: 225,
@@ -202,9 +225,17 @@ class JenisSampah extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OrganikScreen()));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const OrganikScreen(),
+                            ),
+                          );
                         },
-                        child: Image.asset('assets/icons/sampah-organik.jpeg', width: 155 , height: 140 ),
+                        child: Image.asset(
+                          'assets/icons/sampah-organik.jpeg',
+                          width: 155,
+                          height: 140,
+                        ),
                       ),
                       const Text(
                         'Sampah Organik',
@@ -213,7 +244,7 @@ class JenisSampah extends StatelessWidget {
                       const Text(
                         'Rp 0/kg',
                         style: TextStyle(fontSize: 15),
-                      )
+                      ),
                     ],
                   ),
                 ),

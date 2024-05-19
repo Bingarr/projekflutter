@@ -1,12 +1,17 @@
-import 'package:trashgrab/charts/item_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:trashgrab/models/item_model.dart';
+import 'package:flutter/foundation.dart';
 
-class BookmarkBloc extends ChangeNotifier {
+class BookmarkProvider extends ChangeNotifier {
   int _count = 0;
   List<ItemModel> items = [];
 
   void addCount() {
     _count++;
+    notifyListeners();
+  }
+
+  void decreaseCount() {
+    _count--;
     notifyListeners();
   }
 
@@ -21,9 +26,7 @@ class BookmarkBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-  int get count {
-    return _count;
-  }
+  int get count => _count;
 
   List<ItemModel> get itemsList {
     return items;

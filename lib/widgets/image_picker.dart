@@ -1,40 +1,43 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
-class ProfileImagePicker extends StatefulWidget {
+class ProfileImagePicker extends StatelessWidget {
   const ProfileImagePicker({
     super.key,
+    this.image,
+    this.onTap,
+    required this.imageUrl,
   });
 
-  @override
-  State<ProfileImagePicker> createState() => _ProfileImagePickerState();
-}
-
-class _ProfileImagePickerState extends State<ProfileImagePicker> {
-  File? _selectedImage;
-  void _pickImage() async {
-    final imagePicker = ImagePicker();
-    final pickedImage =
-        await imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600);
-    if (pickedImage == null) {
-      return;
-    }
-    setState(() {
-      _selectedImage = File(pickedImage.path);
-    });
-  }
+  final File? image;
+  final String imageUrl;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    var content = Image.asset('assets/icons/profile.jpg', fit: BoxFit.cover);
-    if (_selectedImage != null) {
-      Image.network(_selectedImage!.path);
+    Widget content = Image.asset('assets/icons/profile.jpg', fit: BoxFit.cover);
+    if (image != null) {
+      content = Image.file(
+        image!,
+        fit: BoxFit.cover,
+      );
+    } else if (imageUrl.isNotEmpty) {
+      content = CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.cover,
+        errorWidget: (context, url, error) {
+          return Image.asset('assets/icons/profile.jpg');
+        },
+      );
     }
+
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(100),
       child: Container(
+        margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(width: 0.5),
           borderRadius: BorderRadius.circular(100),

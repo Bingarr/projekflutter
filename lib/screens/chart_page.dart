@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trashgrab/charts/bookmark_model.dart';
-import 'package:trashgrab/charts/bookmark_page.dart';
-import 'package:trashgrab/charts/item_model.dart';
+import 'package:trashgrab/providers/bookmark_provider.dart';
+import 'package:trashgrab/screens/bookmark_page.dart';
+import 'package:trashgrab/models/item_model.dart';
 import 'package:provider/provider.dart';
 
 class ChartPage extends StatefulWidget {
@@ -53,20 +53,21 @@ class _ChartPageState extends State<ChartPage> {
 
   @override
   Widget build(BuildContext context) {
-    var bookmarkBloc = Provider.of<BookmarkBloc>(context);
+    var provider = Provider.of<BookmarkProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(),
         title: const Text(
           "Daftar Jenis Sampah",
           textAlign: TextAlign.center,
-          selectionColor: Colors.white,
         ),
+        foregroundColor: Colors.white,
         backgroundColor: const Color.fromARGB(255, 21, 111, 24),
         actions: [
           Row(
             children: [
-              Text(bookmarkBloc.count.toString()),
+              Text(provider.count.toString()),
               IconButton(
                 icon: const Icon(
                   Icons.shopping_cart,
@@ -101,7 +102,7 @@ class _ChartPageState extends State<ChartPage> {
                         radius: 35,
                       ),
                       onTap: () {
-                        bookmarkBloc.addCount();
+                        provider.addCount();
 
                         ItemModel itemModel = ItemModel(
                           title: itemsList[index]['title'],
@@ -109,7 +110,7 @@ class _ChartPageState extends State<ChartPage> {
                           isFavorite: !itemsList[index]['isFavorite'],
                         );
 
-                        bookmarkBloc.addItems(itemModel);
+                        provider.addItems(itemModel);
 
                         setState(() {
                           itemsList[index]['status'] = true;

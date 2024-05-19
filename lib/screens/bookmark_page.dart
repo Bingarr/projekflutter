@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trashgrab/charts/bookmark_model.dart';
+import 'package:trashgrab/providers/bookmark_provider.dart';
 
 class BookmarksPage extends StatefulWidget {
   const BookmarksPage({super.key});
-
 
   @override
   _BookmarksPageState createState() => _BookmarksPageState();
@@ -13,7 +12,7 @@ class BookmarksPage extends StatefulWidget {
 class _BookmarksPageState extends State<BookmarksPage> {
   @override
   Widget build(BuildContext context) {
-    var bookmarkBloc = Provider.of<BookmarkBloc>(context);
+    var provider = Provider.of<BookmarkProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -24,13 +23,13 @@ class _BookmarksPageState extends State<BookmarksPage> {
         child: Column(
           children: [
             ListView.builder(
-              itemCount: bookmarkBloc.items.length,
+              itemCount: provider.items.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(bookmarkBloc.items[index].title),
-                  subtitle: Text(bookmarkBloc.items[index].subTitle),
+                  title: Text(provider.items[index].title),
+                  subtitle: Text(provider.items[index].subTitle),
                 );
               },
             ),
@@ -40,4 +39,3 @@ class _BookmarksPageState extends State<BookmarksPage> {
     );
   }
 }
-
