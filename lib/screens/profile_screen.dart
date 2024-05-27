@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:trashgrab/providers/auth_provider.dart';
-import 'package:trashgrab/screens/edit_profile.dart';
+import 'package:trashgrab/screens/edit_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trashgrab/utils/function.dart';
 import 'package:trashgrab/utils/space_extension.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,10 +30,13 @@ class ProfileScreen extends StatelessWidget {
               return const Text('error');
             }
             final userData = snapshot.data!.data();
+            encapFunction(
+              () => provider.updateData(userData),
+            );
             return Column(
               children: [
                 80.verticalSpace,
-                if (userData?['photo'] == '') ...[
+                if (userData?['photo'] == '' || userData?['photo'] == null) ...[
                   const CircleAvatar(
                     radius: 70,
                     backgroundImage: AssetImage('assets/icons/profile.jpg'),
@@ -93,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => EditProfilePage(
+                            builder: (context) => EditProfileScreen(
                               imageUrl: userData?['photo'] ?? '',
                               addressText: userData?['address'],
                               emailText: userData?['email'],

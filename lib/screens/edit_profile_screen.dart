@@ -5,8 +5,8 @@ import 'package:trashgrab/utils/space_extension.dart';
 import 'package:trashgrab/widgets/image_picker.dart';
 import 'package:flutter/material.dart';
 
-class EditProfilePage extends StatelessWidget {
-  const EditProfilePage({
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({
     Key? key,
     this.nameText,
     this.emailText,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trashgrab/constants/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:trashgrab/screens/base_screen.dart';
-import 'package:trashgrab/screens/welcome_page.dart';
+import 'package:trashgrab/screens/welcome_screen.dart';
 
 class LoginChecker extends StatelessWidget {
   const LoginChecker({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class LoginChecker extends StatelessWidget {
         if (snapshot.hasData) {
           return const BaseScreen();
         }
-        return const WelcomePage();
+        return const WelcomeScreen();
       },
     );
   }

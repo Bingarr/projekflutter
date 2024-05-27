@@ -16,7 +16,7 @@ class RoleHiveAdapter extends TypeAdapter<RoleHive> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return RoleHive()..role = fields[0] as RoleUserCurrent?;
+    return RoleHive()..role = fields[0] as int?;
   }
 
   @override

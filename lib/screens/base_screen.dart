@@ -1,6 +1,5 @@
 import 'package:provider/provider.dart';
 import 'package:trashgrab/constants/color.dart';
-import 'package:trashgrab/models/role_enum.dart';
 import 'package:trashgrab/providers/base_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:trashgrab/utils/hive/role_hive_service.dart';
@@ -11,17 +10,16 @@ class BaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<BaseProvider>();
-    
+
     return Scaffold(
-      body: provider.currentPage,
+      body: provider.currentScreen,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: kPrimaryColor,
         backgroundColor: Colors.white,
         elevation: 0,
         items: [
-          if (RoleHiveServices.getRole()?.role ==
-              RoleUserCurrent.user) ...const [
+          if (RoleHiveServices.getRole()?.role == 0) ...const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Beranda",
@@ -36,12 +34,16 @@ class BaseScreen extends StatelessWidget {
             ),
           ] else ...const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.receipt_long),
-              label: "Transaksi",
+              icon: Icon(Icons.supervised_user_circle_sharp),
+              label: "Petugas",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.interests),
               label: "Tipe",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_long),
+              label: "Transaksi",
             ),
           ],
           const BottomNavigationBarItem(

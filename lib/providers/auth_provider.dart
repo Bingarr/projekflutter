@@ -7,7 +7,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trashgrab/login_checker.dart';
-import 'package:trashgrab/models/role_enum.dart';
 import 'package:trashgrab/screens/base_screen.dart';
 import 'package:trashgrab/utils/function.dart';
 import 'package:trashgrab/utils/hive/role_hive_service.dart';
@@ -18,6 +17,7 @@ class MyAuthProvider extends ChangeNotifier {
   final _db = FirebaseFirestore.instance;
   final _storageRef = FirebaseStorage.instance.ref();
 
+  /// all user
   void login({
     required BuildContext context,
     required String email,
@@ -59,6 +59,14 @@ class MyAuthProvider extends ChangeNotifier {
     }
   }
 
+  Map<String, dynamic>? data;
+
+  void updateData(Map<String, dynamic>? value) {
+    data = value;
+    notifyListeners();
+  }
+
+  /// all user
   void signup({
     required BuildContext context,
     required String email,
@@ -80,6 +88,14 @@ class MyAuthProvider extends ChangeNotifier {
         'address': '',
         'phone': '',
         'photo': '',
+      });
+      await _db
+          .collection('activity_status')
+          .doc(userCredentials.user?.uid)
+          .set({
+        'desc': [],
+        'status_display': false,
+        'block_transaction': false,
       });
       await changeRoleUser(userCredentials.user?.uid);
       pop(context);
@@ -107,26 +123,30 @@ class MyAuthProvider extends ChangeNotifier {
     }
   }
 
+  /// all user
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamProfile =
       FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .snapshots();
 
+  /// all user
   Future<void> changeRoleUser(String? id) async {
     final data = await _db.collection("users").doc(id).get();
     if (data.data()?['role'] != null) {
       if (data.data()?['role'] == 'admin') {
-        RoleHiveServices.setRole(RoleUserCurrent.admin);
+        RoleHiveServices.setRole(1);
       } else {
-        RoleHiveServices.setRole(RoleUserCurrent.user);
+        RoleHiveServices.setRole(0);
       }
     }
   }
 
+  /// all user
   void doLogout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     RoleHiveServices.deleteRole();
+    notifyListeners();
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -135,6 +155,7 @@ class MyAuthProvider extends ChangeNotifier {
     );
   }
 
+  /// all user
   Future<void> editProfile({
     required String oldPhoto,
     required String phone,
@@ -170,7 +191,7 @@ class MyAuthProvider extends ChangeNotifier {
       }
     }
     try {
-      await FirebaseFirestore.instance.collection('users').doc(userId).update({
+      await _db.collection('users').doc(userId).update({
         'username': username,
         'address': address,
         'phone': phone,
@@ -194,11 +215,13 @@ class MyAuthProvider extends ChangeNotifier {
 
   File? localImage;
 
+  /// all user
   void clearLocalImage() {
     localImage = null;
     notifyListeners();
   }
 
+  /// all user
   void pickImage() async {
     final imagePicker = ImagePicker();
     final pickedImage = await imagePicker.pickImage(
@@ -211,9 +234,9 @@ class MyAuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// all user
   void deleteOldPhoto(String fileName) {
-    final storageRef = _storageRef;
-    final imagesRef = storageRef.child("images/$fileName");
+    final imagesRef = _storageRef.child("images/$fileName");
     imagesRef.delete();
     notifyListeners();
   }

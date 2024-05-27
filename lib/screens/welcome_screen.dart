@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trashgrab/screens/login.dart';
-import 'package:trashgrab/screens/signup.dart';
+import 'package:trashgrab/screens/login_screen.dart';
+import 'package:trashgrab/screens/signup_screen.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginPage(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     },
@@ -83,7 +83,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignupPage(),
+                          builder: (context) => SignupScreen(),
                         ),
                       );
                     },

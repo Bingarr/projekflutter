@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trashgrab/providers/auth_provider.dart';
-import 'package:trashgrab/screens/login.dart';
+import 'package:trashgrab/screens/login_screen.dart';
 
-class SignupPage extends StatelessWidget {
-  SignupPage({super.key});
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
 
   final _usernameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
@@ -278,7 +278,7 @@ class SignupPage extends StatelessWidget {
                     onPressed: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginPage(),
+                        builder: (context) => LoginScreen(),
                       ),
                     ),
                     child: const Text(

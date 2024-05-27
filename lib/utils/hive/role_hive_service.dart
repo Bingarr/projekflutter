@@ -1,6 +1,5 @@
 
 import 'package:hive/hive.dart';
-import 'package:trashgrab/models/role_enum.dart';
 import 'package:trashgrab/utils/hive/adapter/role_hive.dart';
 
 class RoleHiveServices {
@@ -9,7 +8,7 @@ class RoleHiveServices {
   static final roleBox = Hive.box('role');
   static const roleKey = 'role-key';
 
-  static Future<void> setRole(RoleUserCurrent role) async {
+  static Future<void> setRole(int role) async {
     RoleHive roleHive = RoleHive()..role = role;
 
     await roleBox.put(roleKey, roleHive);
