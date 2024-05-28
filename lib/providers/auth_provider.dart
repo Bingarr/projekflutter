@@ -41,6 +41,7 @@ class MyAuthProvider extends ChangeNotifier {
         context,
         MaterialPageRoute(builder: (context) => const BaseScreen()),
       );
+      notifyListeners();
     } on FirebaseAuthException catch (e) {
       List<String> err = e.toString().split('] ');
       String errText;
@@ -105,6 +106,7 @@ class MyAuthProvider extends ChangeNotifier {
           builder: (context) => const BaseScreen(),
         ),
       );
+      notifyListeners();
     } on FirebaseAuthException catch (e) {
       List<String> err = e.toString().split('] ');
       String errText;
@@ -143,7 +145,7 @@ class MyAuthProvider extends ChangeNotifier {
   }
 
   /// all user
-  void doLogout(BuildContext context) async {
+  void doLogout(BuildContext context, Function() func) async {
     await FirebaseAuth.instance.signOut();
     RoleHiveServices.deleteRole();
     notifyListeners();
@@ -153,6 +155,7 @@ class MyAuthProvider extends ChangeNotifier {
         builder: (context) => const LoginChecker(),
       ),
     );
+    func();
   }
 
   /// all user

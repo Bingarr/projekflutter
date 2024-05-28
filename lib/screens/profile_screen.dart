@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:trashgrab/providers/auth_provider.dart';
+import 'package:trashgrab/providers/base_provider.dart';
 import 'package:trashgrab/screens/edit_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<MyAuthProvider>();
+    final baseProvider = context.watch<BaseProvider>();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -22,8 +24,13 @@ class ProfileScreen extends StatelessWidget {
           stream: provider.streamProfile,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return Column(
+                children: [
+                  70.verticalSpace,
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
               );
             }
             if (!snapshot.hasData || snapshot.hasError) {
@@ -127,7 +134,12 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 20, height: 10),
                     ElevatedButton(
-                      onPressed: () => provider.doLogout(context),
+                      onPressed: () {
+                        provider.doLogout(
+                          context,
+                          () => baseProvider.changeIndex(0),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(15),
                         backgroundColor: const Color.fromARGB(
