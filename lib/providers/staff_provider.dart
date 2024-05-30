@@ -24,8 +24,12 @@ class StaffProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> streamStaff =
-      FirebaseFirestore.instance.collection('staffs').snapshots();
+  void initRefresh() {
+    streamStaff = _db.collection('staffs').snapshots();
+    notifyListeners();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>? streamStaff;
 
   final _db = FirebaseFirestore.instance;
 

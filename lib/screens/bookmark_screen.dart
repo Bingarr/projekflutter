@@ -12,13 +12,15 @@ import 'package:trashgrab/widgets/bookmark_item.dart';
 import 'package:trashgrab/widgets/custom_icon_button.dart';
 
 class BookmarksScreen extends StatelessWidget {
-  const BookmarksScreen({super.key});
+  BookmarksScreen({super.key});
+
+  final addressCtrl = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BookmarkProvider>(context);
     final authProvider = Provider.of<MyAuthProvider>(context);
     final baseProvider = Provider.of<BaseProvider>(context);
-    final addressCtrl = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +60,7 @@ class BookmarksScreen extends StatelessWidget {
             10.verticalSpace,
             TextFormField(
               controller: addressCtrl,
-              keyboardType: TextInputType.streetAddress,
+              keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               decoration: const InputDecoration(
                 hintText: 'Masukan alamat',
@@ -105,7 +107,6 @@ class BookmarksScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            
             Row(
               children: [
                 Text(

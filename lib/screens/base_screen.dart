@@ -2,6 +2,13 @@ import 'package:provider/provider.dart';
 import 'package:trashgrab/constants/color.dart';
 import 'package:trashgrab/providers/base_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:trashgrab/screens/chart_screen.dart';
+import 'package:trashgrab/screens/featuerd_screen.dart';
+import 'package:trashgrab/screens/history_screen.dart';
+import 'package:trashgrab/screens/jenis_sampah_admin_screen.dart';
+import 'package:trashgrab/screens/profile_screen.dart';
+import 'package:trashgrab/screens/staff_screen.dart';
+import 'package:trashgrab/screens/transaction_screen.dart';
 import 'package:trashgrab/utils/hive/role_hive_service.dart';
 
 class BaseScreen extends StatelessWidget {
@@ -12,7 +19,21 @@ class BaseScreen extends StatelessWidget {
     final provider = context.watch<BaseProvider>();
 
     return Scaffold(
-      body: provider.currentScreen,
+      body: IndexedStack(
+        index: provider.index,
+        children: [
+          if (RoleHiveServices.getRole()?.role == 0) ...const [
+            FeaturedScreen(),
+            HistoryScreen(),
+            ChartScreen(),
+          ] else ...const [
+            StaffScreen(),
+            JenisSampahAdminScreen(),
+            TransactionScreen(),
+          ],
+          const ProfileScreen(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: kPrimaryColor,

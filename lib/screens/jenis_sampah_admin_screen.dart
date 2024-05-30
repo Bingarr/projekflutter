@@ -62,6 +62,7 @@ class JenisSampahAdminScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton.small(
+        heroTag: 'type',
         child: const Icon(
           Icons.add,
           color: Colors.white,

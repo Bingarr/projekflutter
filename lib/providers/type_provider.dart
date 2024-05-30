@@ -11,8 +11,12 @@ import 'package:trashgrab/widgets/dialog_helper.dart';
 class TypeProvider extends ChangeNotifier {
   final _authId = FirebaseAuth.instance.currentUser?.uid;
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> streamType =
-      FirebaseFirestore.instance.collection('type').snapshots();
+  void initRefresh() {
+    streamType = FirebaseFirestore.instance.collection('type').snapshots();
+    notifyListeners();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>? streamType;
 
   /// only admin
   void tapActionType({

@@ -11,8 +11,12 @@ class TransactionProvider extends ChangeNotifier {
   final firebaseAuth = FirebaseAuth.instance;
   final _db = FirebaseFirestore.instance;
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> streamAll =
-      FirebaseFirestore.instance.collection('transaction').snapshots();
+  void initRefresh() {
+    streamAll = _db.collection('transaction').snapshots();
+    notifyListeners();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>? streamAll;
 
   List<QueryDocumentSnapshot<Map<String, dynamic>>> data = [];
 

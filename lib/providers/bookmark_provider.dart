@@ -53,6 +53,14 @@ class BookmarkProvider extends ChangeNotifier {
     }
   }
 
+  void initRefresh() {
+    dateValue = null;
+    _count = 0;
+    _items.clear;
+    total = 0;
+    notifyListeners();
+  }
+
   int get count => _count;
 
   List<ItemModel> get itemsList => _items;
@@ -130,10 +138,7 @@ class BookmarkProvider extends ChangeNotifier {
         'block_transaction': true,
       });
       pop(context);
-      _count = 0;
-      _items.clear;
-      total = 0;
-      notifyListeners();
+      initRefresh();
       pop(context);
       onTap();
     } catch (_) {

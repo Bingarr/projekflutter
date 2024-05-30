@@ -47,7 +47,7 @@ class ChartScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BookmarksScreen(),
+                      builder: (context) => BookmarksScreen(),
                     ),
                   );
                 },

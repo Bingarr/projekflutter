@@ -6,11 +6,15 @@ class ActivityProvider extends ChangeNotifier {
   final _firebaseAuth = FirebaseAuth.instance;
   final _db = FirebaseFirestore.instance;
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> streamActivity =
-      FirebaseFirestore.instance
-          .collection('activity_status')
-          .doc(FirebaseAuth.instance.currentUser?.uid)
-          .snapshots();
+  void initRefresh() {
+    streamActivity = _db
+        .collection('activity_status')
+        .doc(_firebaseAuth.currentUser?.uid)
+        .snapshots();
+    notifyListeners();
+  }
+
+  Stream<DocumentSnapshot<Map<String, dynamic>>>? streamActivity;
 
   /// all user
   Future<void> changeStatusDisplayUser({

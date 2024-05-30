@@ -6,8 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:trashgrab/login_checker.dart';
 import 'package:trashgrab/screens/base_screen.dart';
+import 'package:trashgrab/screens/welcome_screen.dart';
 import 'package:trashgrab/utils/function.dart';
 import 'package:trashgrab/utils/hive/role_hive_service.dart';
 import 'package:trashgrab/widgets/dialog_helper.dart';
@@ -41,6 +41,7 @@ class MyAuthProvider extends ChangeNotifier {
         context,
         MaterialPageRoute(builder: (context) => const BaseScreen()),
       );
+      initRefresh();
       notifyListeners();
     } on FirebaseAuthException catch (e) {
       List<String> err = e.toString().split('] ');
@@ -106,6 +107,7 @@ class MyAuthProvider extends ChangeNotifier {
           builder: (context) => const BaseScreen(),
         ),
       );
+      initRefresh();
       notifyListeners();
     } on FirebaseAuthException catch (e) {
       List<String> err = e.toString().split('] ');
@@ -125,12 +127,14 @@ class MyAuthProvider extends ChangeNotifier {
     }
   }
 
+  void initRefresh() {
+    streamProfile =
+        _db.collection('users').doc(_firebaseAuth.currentUser?.uid).snapshots();
+    notifyListeners();
+  }
+
   /// all user
-  Stream<DocumentSnapshot<Map<String, dynamic>>> streamProfile =
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser?.uid)
-          .snapshots();
+  Stream<DocumentSnapshot<Map<String, dynamic>>>? streamProfile;
 
   /// all user
   Future<void> changeRoleUser(String? id) async {
@@ -142,17 +146,18 @@ class MyAuthProvider extends ChangeNotifier {
         RoleHiveServices.setRole(0);
       }
     }
+    notifyListeners();
   }
 
   /// all user
   void doLogout(BuildContext context, Function() func) async {
-    await FirebaseAuth.instance.signOut();
+    await _firebaseAuth.signOut();
     RoleHiveServices.deleteRole();
     notifyListeners();
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const LoginChecker(),
+        builder: (context) => const WelcomeScreen(),
       ),
     );
     func();

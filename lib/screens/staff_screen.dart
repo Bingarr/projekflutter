@@ -69,6 +69,7 @@ class StaffScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton.small(
+        heroTag: 'staff',
         child: const Icon(
           Icons.add,
           color: Colors.white,

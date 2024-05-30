@@ -5,7 +5,7 @@ import 'package:trashgrab/utils/space_extension.dart';
 import 'package:trashgrab/widgets/image_picker.dart';
 import 'package:flutter/material.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({
     Key? key,
     this.nameText,
@@ -22,13 +22,42 @@ class EditProfileScreen extends StatelessWidget {
   final String imageUrl;
 
   @override
-  Widget build(BuildContext context) {
-    final provider = context.watch<MyAuthProvider>();
-    final _nameController = TextEditingController(text: nameText);
-    final _emailController = TextEditingController(text: emailText);
-    final _addressController = TextEditingController(text: addressText);
-    final _phoneController = TextEditingController(text: phoneText);
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
 
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _addressController;
+  late TextEditingController _phoneController;
+  late MyAuthProvider provider;
+
+  @override
+  void initState() {
+    _nameController = TextEditingController(text: widget.nameText);
+    _emailController = TextEditingController(text: widget.emailText);
+    _addressController = TextEditingController(text: widget.addressText);
+    _phoneController = TextEditingController(text: widget.phoneText);
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    provider = context.watch<MyAuthProvider>();
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _addressController.dispose();
+    _phoneController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primaryColor: Colors.green),
       home: Scaffold(
@@ -49,13 +78,13 @@ class EditProfileScreen extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: ProfileImagePicker(
-                  imageUrl: imageUrl,
+                  imageUrl: widget.imageUrl,
                   image: provider.localImage,
                   onTap: provider.pickImage,
                 ),
               ),
               20.verticalSpace,
-              TextField(
+              TextFormField(
                 readOnly: true,
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -65,7 +94,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              TextField(
+              TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Name',
@@ -74,7 +103,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              TextField(
+              TextFormField(
                 controller: _addressController,
                 decoration: InputDecoration(
                   labelText: 'Address',
@@ -83,7 +112,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              TextField(
+              TextFormField(
                 controller: _phoneController,
                 decoration: InputDecoration(
                   labelText: 'Phone',
@@ -97,7 +126,7 @@ class EditProfileScreen extends StatelessWidget {
                   context: context,
                   address: _addressController.text,
                   username: _nameController.text,
-                  oldPhoto: imageUrl,
+                  oldPhoto: widget.imageUrl,
                   phone: _phoneController.text,
                 ),
                 child: const Text('Simpan'),
