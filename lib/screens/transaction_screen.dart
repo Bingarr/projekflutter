@@ -53,7 +53,7 @@ class TransactionScreen extends StatelessWidget {
                 ),
                 5.verticalSpace,
                 Text(
-                  "Admin",
+                  authProvider.name,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(

@@ -19,11 +19,6 @@ class MyAuthProvider extends ChangeNotifier {
 
   String name = '';
 
-  void updateName(String? value) {
-    name = value ?? '';
-    notifyListeners();
-  }
-
   /// all user
   void login({
     required BuildContext context,
