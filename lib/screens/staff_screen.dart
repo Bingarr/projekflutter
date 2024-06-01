@@ -32,34 +32,40 @@ class StaffScreen extends StatelessWidget {
               child: Text("Loading"),
             );
           }
+          final data = snapshot.data?.docs
+              .where((item) => item['role'] == 'staff')
+              .toList();
           encapFunction(
-            () => provider.updateList(snapshot.data?.docs),
+            () => provider.updateList(data),
           );
 
           return ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
-            itemCount: snapshot.data?.docs.length ?? 0,
+            itemCount: data?.length ?? 0,
             physics: const ClampingScrollPhysics(),
             separatorBuilder: (_, i) => 5.verticalSpace,
             itemBuilder: (context, i) {
-              final data = snapshot.data!.docs[i];
+              final finalData = data![i];
 
               return StaffItem(
-                name: data['nama'] ?? '-',
-                platNumber: data['plat'] ?? '',
+                name: finalData['username'] ?? '-',
+                platNumber: finalData['plat'] ?? '',
                 tapEdit: () {
                   provider.tapActionStaff(
                     context: context,
                     isEdit: true,
-                    name: data['nama'] ?? '-',
-                    plat: data['plat'] ?? '',
-                    id: data['id'] ?? '',
+                    name: finalData['username'] ?? '-',
+                    plat: finalData['plat'] ?? '',
+                    id: finalData['id'] ?? '',
+                    email: finalData['email'] ?? '',
                   );
                 },
                 tapDelete: () {
                   provider.doDeleteData(
-                    id: data['id'],
+                    id: finalData['id'],
+                    email: finalData['email'] ?? '',
+                    password: finalData['password'] ?? '',
                     context: context,
                   );
                 },

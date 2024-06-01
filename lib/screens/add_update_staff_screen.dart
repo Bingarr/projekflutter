@@ -14,10 +14,12 @@ class AddUpdateStaffScreen extends StatefulWidget {
     this.plat,
     required this.isEdit,
     this.id,
+    this.email,
   }) : super(key: key);
 
   final String? name;
   final String? plat;
+  final String? email;
   final String? id;
   final bool isEdit;
 
@@ -27,6 +29,8 @@ class AddUpdateStaffScreen extends StatefulWidget {
 
 class _AddUpdateStaffScreenState extends State<AddUpdateStaffScreen> {
   late TextEditingController nameCtrl;
+  late TextEditingController passCtrl;
+  late TextEditingController emailCtrl;
   late TextEditingController plat1Ctrl;
   late TextEditingController plat2Ctrl;
   late TextEditingController plat3Ctrl;
@@ -34,6 +38,8 @@ class _AddUpdateStaffScreenState extends State<AddUpdateStaffScreen> {
   @override
   void initState() {
     nameCtrl = TextEditingController(text: widget.name);
+    passCtrl = TextEditingController();
+    emailCtrl = TextEditingController(text: widget.email);
     if (widget.plat != null) {
       List<String> list = widget.plat!.split(' ');
       plat1Ctrl = TextEditingController(text: list[0]);
@@ -52,10 +58,15 @@ class _AddUpdateStaffScreenState extends State<AddUpdateStaffScreen> {
     if (nameCtrl.text.isEmpty ||
         plat1Ctrl.text.isEmpty ||
         plat3Ctrl.text.isEmpty ||
-        plat2Ctrl.text.isEmpty) {
+        plat2Ctrl.text.isEmpty ||
+        emailCtrl.text.isEmpty) {
       doSnackbar(context, 'Please fill all field');
     } else {
-      onTap();
+      if (!widget.isEdit && passCtrl.text.isEmpty) {
+        doSnackbar(context, 'Please fill all field');
+      } else {
+        onTap();
+      }
     }
   }
 
@@ -118,6 +129,58 @@ class _AddUpdateStaffScreenState extends State<AddUpdateStaffScreen> {
               ),
             ),
             20.verticalSpace,
+            if (!widget.isEdit) ...[
+              Text(
+                'Email',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              10.verticalSpace,
+              TextFormField(
+                controller: emailCtrl,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: 10,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+              20.verticalSpace,
+              Text(
+                "Password",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                controller: passCtrl,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: 10,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              20.verticalSpace,
+            ],
             Text(
               'Plat',
               style: Theme.of(context).textTheme.titleMedium,
@@ -220,13 +283,15 @@ class _AddUpdateStaffScreenState extends State<AddUpdateStaffScreen> {
                       name: nameCtrl.text,
                       plat: returnPlatData(),
                       id: widget.id!,
+                      // email: emailCtrl.text,
                     );
                   } else {
                     provider.doCreateData(
                       context: context,
                       name: nameCtrl.text,
                       plat: returnPlatData(),
-                      id: generateUuid(),
+                      email: emailCtrl.text,
+                      password: passCtrl.text,
                     );
                   }
                 });

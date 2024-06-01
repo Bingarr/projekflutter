@@ -9,9 +9,9 @@ class TransactionItem extends StatelessWidget {
     Key? key,
     required this.id,
     required this.status,
-    required this.doReject,
-    required this.doApprove,
-    required this.doDone,
+    this.doReject,
+    this.doApprove,
+    this.doDone,
     required this.nama,
     required this.harga,
   }) : super(key: key);
@@ -20,9 +20,9 @@ class TransactionItem extends StatelessWidget {
   final String status;
   final String nama;
   final int harga;
-  final Function() doReject;
-  final Function() doApprove;
-  final Function() doDone;
+  final Function()? doReject;
+  final Function()? doApprove;
+  final Function()? doDone;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,9 @@ class TransactionItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  if (status == 'Menunggu') ...[
+                  if (status == 'Menunggu' &&
+                      doReject != null &&
+                      doApprove != null) ...[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
@@ -74,7 +76,7 @@ class TransactionItem extends StatelessWidget {
                       ),
                     ),
                   ],
-                  if (status == 'Dalam Perjalanan') ...[
+                  if (status == 'Dalam Perjalanan' && doDone != null) ...[
                     Row(
                       children: [
                         const Icon(

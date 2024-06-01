@@ -27,6 +27,7 @@ class TransactionProvider extends ChangeNotifier {
           .toFormatDateToDate()
           .compareTo((a['tanggal'] as String?).toFormatDateToDate());
     });
+    
     notifyListeners();
   }
 

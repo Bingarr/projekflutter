@@ -26,6 +26,8 @@ class BaseScreen extends StatelessWidget {
             FeaturedScreen(),
             HistoryScreen(),
             ChartScreen(),
+          ] else if (RoleHiveServices.getRole()?.role == 2) ...[
+            const TransactionScreen(),
           ] else ...const [
             StaffScreen(),
             JenisSampahAdminScreen(),
@@ -52,6 +54,11 @@ class BaseScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag),
               label: "Keranjang",
+            ),
+          ] else if (RoleHiveServices.getRole()?.role == 2) ...[
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_long),
+              label: "Transaksi",
             ),
           ] else ...const [
             BottomNavigationBarItem(

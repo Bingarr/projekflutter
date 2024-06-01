@@ -17,6 +17,13 @@ class MyAuthProvider extends ChangeNotifier {
   final _db = FirebaseFirestore.instance;
   final _storageRef = FirebaseStorage.instance.ref();
 
+  String name = '';
+
+  void updateName(String? value) {
+    name = value ?? '';
+    notifyListeners();
+  }
+
   /// all user
   void login({
     required BuildContext context,
@@ -68,7 +75,7 @@ class MyAuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// all user
+  /// only user
   void signup({
     required BuildContext context,
     required String email,
@@ -90,6 +97,7 @@ class MyAuthProvider extends ChangeNotifier {
         'address': '',
         'phone': '',
         'photo': '',
+        'plat': null,
       });
       await _db
           .collection('activity_status')
@@ -127,9 +135,13 @@ class MyAuthProvider extends ChangeNotifier {
     }
   }
 
-  void initRefresh() {
+  void initRefresh() async {
     streamProfile =
         _db.collection('users').doc(_firebaseAuth.currentUser?.uid).snapshots();
+    _db.collection('users').doc(_firebaseAuth.currentUser?.uid).get().then((value) {
+      name = value['username'] ?? '';
+    notifyListeners();
+    });
     notifyListeners();
   }
 
@@ -142,6 +154,8 @@ class MyAuthProvider extends ChangeNotifier {
     if (data.data()?['role'] != null) {
       if (data.data()?['role'] == 'admin') {
         RoleHiveServices.setRole(1);
+      } else if (data.data()?['role'] == 'staff') {
+        RoleHiveServices.setRole(2);
       } else {
         RoleHiveServices.setRole(0);
       }
